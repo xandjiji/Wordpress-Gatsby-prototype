@@ -1,39 +1,16 @@
-import React from "react"
+import React from 'react';
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import MasterLayout from '../layouts/MasterLayout';
 
-import { graphql, useStaticQuery } from 'gatsby';
+import PostList from '../components/PostList'
+import PageList from '../components/PageList'
 
 const IndexPage = () => {
-
-    const query = useStaticQuery(
-        graphql`
-            {
-                allWordpressPost {
-                    edges {
-                        node {
-                            id
-                            title
-                        }
-                    }
-                }
-            }
-        `
-    )
-
     return (
-        <Layout>
-            <SEO title="Home" />
-
-            <ul>
-                {query.allWordpressPost.edges.map(post => (
-                    <li key={post.node.id}>
-                        {post.node.title}
-                    </li>
-                ))}
-            </ul>
-        </Layout>
+        <MasterLayout>
+            <PostList />
+            <PageList />
+        </MasterLayout>
     )
 }
 
