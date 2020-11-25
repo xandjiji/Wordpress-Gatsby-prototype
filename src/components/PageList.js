@@ -1,5 +1,6 @@
 import React from 'react';
 import { graphql, useStaticQuery, Link } from 'gatsby';
+import { getPathname } from '../utils/getPathname';
 
 export default () => {
     const query = useStaticQuery(
@@ -10,7 +11,7 @@ export default () => {
                         node {
                             id
                             title
-                            slug
+                            link
                         }
                     }
                 }
@@ -24,11 +25,11 @@ export default () => {
             <ul>
                 {query.allWordpressPage.edges.map(page => {
 
-                    const { id, title, slug } = page.node;
+                    const { id, title, link } = page.node;
 
                     return (
                         <li key={id}>
-                            <Link to={`/${slug}`}>
+                            <Link to={getPathname(link)}>
                                 {title}
                             </Link>
                         </li>

@@ -1,19 +1,23 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import ReactHtmlParser from 'react-html-parser';
+
 import MasterLayout from '../layouts/MasterLayout';
 
 export default ({ pageContext }) => {
 
-    const { title, yoast_head } = pageContext;
+    const { yoast_head, title, content } = pageContext;
 
     return (
         <MasterLayout>
             <Helmet>
-                { ReactHtmlParser(yoast_head) }
+                {ReactHtmlParser(yoast_head)}
             </Helmet>
 
-            <h1>{title}</h1>
+            <section>
+                <h1>{title}</h1>
+                <div dangerouslySetInnerHTML={{ __html: content }}></div>
+            </section>
         </MasterLayout>
     );
 }

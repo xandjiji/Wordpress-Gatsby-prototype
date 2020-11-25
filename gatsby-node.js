@@ -1,7 +1,9 @@
-const _ = require(`lodash`)
-const Promise = require(`bluebird`)
-const path = require(`path`)
-const slash = require(`slash`)
+const _ = require(`lodash`);
+const Promise = require(`bluebird`);
+const path = require(`path`);
+const slash = require(`slash`);
+
+const { getPathname } = require('./src/utils/getPathname');
 
 // Implement the Gatsby API “createPages”. This is
 // called after the Gatsby bootstrap is finished so you have
@@ -24,6 +26,7 @@ exports.createPages = ({ graphql, actions }) => {
                 edges {
                     node {
                         id
+                        link
                         slug
                         status
                         template
@@ -55,7 +58,7 @@ exports.createPages = ({ graphql, actions }) => {
                     // as a template component. The `context` is
                     // optional but is often necessary so the template
                     // can query data specific to each page.
-                    path: `/${edge.node.slug}/`,
+                    path: `${getPathname(edge.node.link)}`,
                     component: slash(pageTemplate),
                     context: edge.node,
                 })
@@ -71,6 +74,7 @@ exports.createPages = ({ graphql, actions }) => {
                         edges {
                             node {
                                 id
+                                link
                                 title
                                 slug
                                 excerpt
@@ -90,7 +94,7 @@ exports.createPages = ({ graphql, actions }) => {
                     // The Post ID is prefixed with 'POST_'
                     _.each(result.data.allWordpressPost.edges, edge => {
                         createPage({
-                            path: `/post/${edge.node.slug}/`,
+                            path: `${getPathname(edge.node.link)}`,
                             component: slash(postTemplate),
                             context: edge.node,
                         })
