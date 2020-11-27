@@ -1,15 +1,41 @@
 import React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
 
 import MasterLayout from '../layouts/MasterLayout';
 
-import PostList from '../components/PostList'
-import PageList from '../components/PageList'
+import PostGrid from '../components/common/PostGrid';
 
 const IndexPage = () => {
+    const query = useStaticQuery(
+        graphql`
+            {
+                allWordpressPost {
+                    edges {
+                        node {
+                            id
+                            title
+                            link
+                        }
+                    }
+                }
+
+                allWordpressPage {
+                    edges {
+                        node {
+                            id
+                            title
+                            link
+                        }
+                    }
+                }
+            }
+        `
+    );
+
     return (
         <MasterLayout>
-            <PostList />
-            <PageList />
+            <PostGrid title="Posts" itemArray={query.allWordpressPost.edges} />
+            <PostGrid title="Pages" itemArray={query.allWordpressPage.edges} />
         </MasterLayout>
     )
 }

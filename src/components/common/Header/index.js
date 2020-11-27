@@ -1,6 +1,8 @@
 import React from 'react';
-import { useStaticQuery, Link } from 'gatsby';
-import { getPathname } from '../../utils/getPathname';
+import { useStaticQuery, Link, graphql } from 'gatsby';
+import { getPathname } from '../../../utils/getPathname';
+
+import MaterialContainer from '../MaterialContainer';
 
 const Header = () => {
     const menu = useStaticQuery(graphql`
@@ -9,10 +11,12 @@ const Header = () => {
                 edges {
                     node {
                         items {
+                            object_id
                             title
                             url
 
                             wordpress_children {
+                                object_id
                                 title
                                 url
                             }
@@ -23,36 +27,27 @@ const Header = () => {
         }`
     );
 
-    const teste = RecursiveUL(menu.allWordpressWpApiMenusMenusItems.edges[0].node.items);
-
     return (
-
-        <header>
-            <div>
+        <MaterialContainer labelTag="Header" container={true}>
+            <header>
                 <h1>
-                    <Link to="/">
-                        Home
-                    </Link>
+                    <Link to="/">Home</Link>
                 </h1>
 
-                {teste}
-            </div>
-
-            <nav>
-                <ul>
-                    
-                </ul>
-            </nav>
-        </header>
+                <nav>
+                    {RecursiveUL(menu.allWordpressWpApiMenusMenusItems.edges[0].node.items)}
+                </nav>
+            </header>
+        </MaterialContainer>
     );
 }
 
 const RecursiveUL = (itemArray) => {
-    if(Array.isArray(itemArray)) {
+    if (Array.isArray(itemArray)) {
         return (
             <ul>
                 {itemArray.map(element => (
-                    <li>
+                    <li key={element.object_id}>
                         <Link to={getPathname(element.url)}>
                             {element.title}
                         </Link>
@@ -64,10 +59,5 @@ const RecursiveUL = (itemArray) => {
         )
     }
 }
-
-/* const stripeLocalhost = (url) => {
-    const urlObj = new URL(url);
-    return urlObj.pathname;
-} */
 
 export default Header
