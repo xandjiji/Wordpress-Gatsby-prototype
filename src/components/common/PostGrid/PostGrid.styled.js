@@ -19,6 +19,10 @@ export const PostGrid = styled.ul`
         li {
             width: calc(50% - 16px);
 
+            &:last-child {
+                margin-bottom: 36px;
+            }
+
             &:last-child:nth-child(2n - 1) {
                 width: 100%;
             }

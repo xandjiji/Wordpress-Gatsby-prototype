@@ -2,7 +2,7 @@ import React from 'react';
 import { useStaticQuery, Link, graphql } from 'gatsby';
 import { getPathname } from '../../../utils/getPathname';
 
-import MaterialContainer from '../MaterialContainer';
+import { HeaderStyled } from './Header.styled';
 
 const Header = () => {
     const menu = useStaticQuery(graphql`
@@ -28,7 +28,7 @@ const Header = () => {
     );
 
     return (
-        <MaterialContainer labelTag="Header" container={true}>
+        <HeaderStyled>
             <header>
                 <h1>
                     <Link to="/">Home</Link>
@@ -38,7 +38,7 @@ const Header = () => {
                     {RecursiveUL(menu.allWordpressWpApiMenusMenusItems.edges[0].node.items)}
                 </nav>
             </header>
-        </MaterialContainer>
+        </HeaderStyled>
     );
 }
 
