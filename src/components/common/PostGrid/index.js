@@ -1,12 +1,13 @@
 import React from 'react';
 
 import MaterialContainer from '../MaterialContainer';
+import { PostGrid } from './PostGrid.styled';
 import PostCard from '../PostCard';
 
 export default ({ title, itemArray }) => {
     return (
         <MaterialContainer labelTag={title} container={true}>
-            <ul>
+            <PostGrid>
                 {itemArray.map(item => {
 
                     const { id } = item.node;
@@ -17,7 +18,7 @@ export default ({ title, itemArray }) => {
                         </li>
                     )
                 })}
-            </ul>
+            </PostGrid>
         </MaterialContainer>
     )
 }

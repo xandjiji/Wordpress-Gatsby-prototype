@@ -20,8 +20,12 @@ export default ({ pageContext }) => {
                             slug
                             title
                             link
+                            excerpt
 
                             featured_media {
+                                title
+                                alt_text
+
                                 localFile {
                                     childImageSharp {
                                         fluid(maxWidth: 300) {
@@ -32,7 +36,9 @@ export default ({ pageContext }) => {
                             }
 
                             categories {
-                            	id
+                                id
+                                name
+                                link
                             }
                         }
                     }

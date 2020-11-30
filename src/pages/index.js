@@ -15,6 +15,26 @@ const IndexPage = () => {
                             id
                             title
                             link
+                            excerpt
+
+                            featured_media {
+                                title
+                                alt_text
+
+                                localFile {
+                                    childImageSharp {
+                                        fluid(maxWidth: 300) {
+                                            ...GatsbyImageSharpFluid
+                                        }
+                                    }
+                                }
+                            }
+
+                            categories {
+                                id
+                                name
+                                link
+                            }
                         }
                     }
                 }
