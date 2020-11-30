@@ -17,8 +17,8 @@ export default ({ post }) => {
                         <Img
                         className="thumbnail"
                         fluid={featured_media.localFile.childImageSharp.fluid}
-                        title={featured_media.title}
-                        alt={featured_media.alt_text} />
+                        title={featured_media.title ? featured_media.title : title}
+                        alt={featured_media.alt_text ? featured_media.alt_text : title} />
                     </Link>
 
                 :   null

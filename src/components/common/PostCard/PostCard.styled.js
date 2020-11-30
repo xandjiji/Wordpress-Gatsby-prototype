@@ -4,6 +4,11 @@ export const PostCard = styled.div`
     border-radius: 5px;
     box-shadow: 2px 2px 4px 2px rgba(0,0,0,0.3);
     overflow: hidden;
+    transition: 0.2s ease-out;
+
+    &:hover {
+        box-shadow: 2px 2px 5px 3px rgba(0,0,0,0.4);
+    }
 
     .thumbnail {
         position: relative;
@@ -20,7 +25,7 @@ export const PostCard = styled.div`
     }
 
     .post-card-body {
-        padding: 16px;
+        padding: 24px 16px;
 
         .category-wrapper {
             display: flex;
@@ -36,6 +41,12 @@ export const PostCard = styled.div`
 
                     font-size: 12px;
                     color: #000000;
+
+                    transition: 0.2s ease-out;
+
+                    &:hover {
+                        box-shadow: 2px 2px 4px 2px rgba(0,0,0,0.14);
+                    }
                 }
                 &:not(:last-child) {
                     margin-right: 8px;
@@ -44,7 +55,7 @@ export const PostCard = styled.div`
         }
 
         .title {
-            margin: 8px 0;
+            margin: 16px 0;
             color: #3F51B5;
             font-size: 24px;
         }
