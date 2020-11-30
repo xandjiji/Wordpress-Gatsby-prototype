@@ -12,6 +12,10 @@ export const HeaderStyled = styled.div`
         justify-content: space-between;
         align-items: center;
 
+        a.active {
+            border-bottom: solid 1px #ffffff99;
+        }
+
         h1 {
             text-transform: uppercase;
             font-size: 24px;
@@ -39,6 +43,7 @@ export const HeaderStyled = styled.div`
                         letter-spacing: 0.6px;
 
                         transition: 0.2s ease-out;
+
                         &:hover {
                             opacity: 0.7;
                         }

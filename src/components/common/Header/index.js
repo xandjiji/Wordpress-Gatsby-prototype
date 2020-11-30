@@ -31,7 +31,7 @@ const Header = () => {
         <HeaderStyled>
             <header>
                 <h1>
-                    <Link to="/">Home</Link>
+                    <Link to="/" activeClassName="active">Home</Link>
                 </h1>
 
                 <nav>
@@ -48,7 +48,7 @@ const RecursiveUL = (itemArray) => {
             <ul>
                 {itemArray.map(element => (
                     <li key={element.object_id}>
-                        <Link to={getPathname(element.url)}>
+                        <Link to={getPathname(element.url)} activeClassName="active">
                             {element.title}
                         </Link>
 
