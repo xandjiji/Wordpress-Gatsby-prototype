@@ -84,4 +84,62 @@ exports.createPages = async ({ graphql, actions }) => {
     `);
 
     await pageBuilder(categories.data.allWordpressCategory.edges, './src/templates/Category.js');
+
+    /* SEARCH */
+
+    const searchData = await graphql(`
+        {
+            allWordpressPost {
+                edges {
+                    node {
+                        id
+                        title
+                        link
+                        excerpt
+                        content
+
+                        featured_media {
+                            title
+                            alt_text
+
+                            localFile {
+                                childImageSharp {
+                                    fluid(maxWidth: 300) {
+                                        aspectRatio,
+                                        base64,
+                                        sizes,
+                                        src,
+                                        srcSet
+                                    }
+                                }
+                            }
+                        }
+
+                        categories {
+                            id
+                            name
+                            link
+                        }
+                    }
+                }
+            }
+        }
+    `);
+
+    createPage({
+        path: `/search`,
+        component: path.resolve('./src/templates/Search.js'),
+        context: {
+            postData: {
+                allPosts: searchData.data.allWordpressPost.edges,
+                options: {
+                    indexStrategy: 'Prefix match',
+                    searchSanitizer: 'Lower Case',
+                    TitleIndex: true,
+                    AuthorIndex: true,
+                    SearchByTerm: true
+                }
+            }
+        }
+    });
 }

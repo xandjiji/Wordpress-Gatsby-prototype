@@ -28,8 +28,8 @@ export default ({ post }) => {
                 <div className="category-wrapper">
                     {categories
                         ? categories.map(item =>
-                            <Link to={getPathname(item.link)}>
-                                <span className="category-item" key={item.id}>{item.name}</span>
+                            <Link to={getPathname(item.link)} key={item.id}>
+                                <span className="category-item">{item.name}</span>
                             </Link>
                         )
 

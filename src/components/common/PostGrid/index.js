@@ -10,11 +10,19 @@ export default ({ title, itemArray }) => {
             <PostGrid>
                 {itemArray.map(item => {
 
-                    const { id } = item.node;
+                    let currentItem;
+
+                    if(item.node) {
+                        currentItem = item.node;
+                    } else {
+                        currentItem = item;
+                    }
+
+                    const { id } = currentItem;
 
                     return (
                         <li key={id}>
-                            <PostCard post={item.node} />
+                            <PostCard post={currentItem} />
                         </li>
                     )
                 })}

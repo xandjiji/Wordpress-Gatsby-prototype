@@ -3,6 +3,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 
 import MasterLayout from '../layouts/MasterLayout';
 
+import SearchBar from '../components/common/SearchBar';
 import PostGrid from '../components/common/PostGrid';
 
 const IndexPage = () => {
@@ -24,7 +25,11 @@ const IndexPage = () => {
                                 localFile {
                                     childImageSharp {
                                         fluid(maxWidth: 300) {
-                                            ...GatsbyImageSharpFluid
+                                            aspectRatio,
+                                            base64,
+                                            sizes,
+                                            src,
+                                            srcSet
                                         }
                                     }
                                 }
@@ -54,6 +59,7 @@ const IndexPage = () => {
 
     return (
         <MasterLayout>
+            <SearchBar />
             <PostGrid title="Posts" itemArray={query.allWordpressPost.edges} />
             <PostGrid title="Pages" itemArray={query.allWordpressPage.edges} />
         </MasterLayout>
