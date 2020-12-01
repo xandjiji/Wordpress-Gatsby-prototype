@@ -8,12 +8,8 @@ import PostGrid from '../components/common/PostGrid';
 
 export default ({ pageContext }) => {
 
-    /* URL param */
-    const params = new URLSearchParams(document.location.search.substring(1));
-    const queryString = params.get('s');
-
     /* state */
-    const [term, setTerm] = useState(queryString);
+    const [term, setTerm] = useState(null);
     const [searchResults, setSearchResults] = useState([]);
     const [searcher, setSearcher] = useState(null);
 
@@ -22,6 +18,11 @@ export default ({ pageContext }) => {
     }
 
     useEffect(() => {
+        /* URL param */
+        const params = new URLSearchParams(document.location.search.substring(1));
+        const queryString = params.get('s');
+        setTerm(queryString);
+
         /* making post array */
         let postArray = [];
 

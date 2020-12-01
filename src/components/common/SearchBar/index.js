@@ -16,7 +16,7 @@ const SearchBar = ({ onChangeHook }) => {
     }
 
     const handleKey = (event) => {
-        if(event.key === 'Enter') {
+        if(event.key === 'Enter' && term) {
             navigate(`/search?s=${term}`);
         }
     }
