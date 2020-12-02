@@ -37,7 +37,6 @@ export default styled.div`
         box-sizing: border-box;
         flex-grow: 1;
         outline: none;
-        transition: 0.2s ease-out;
         border: none;
     }
 

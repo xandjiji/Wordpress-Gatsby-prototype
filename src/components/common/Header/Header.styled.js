@@ -42,7 +42,7 @@ export const HeaderStyled = styled.div`
                         font-weight: 700;
                         letter-spacing: 0.6px;
 
-                        transition: 0.2s ease-out;
+                        transition: opacity 0.2s ease-out;
 
                         &:hover {
                             opacity: 0.7;
@@ -72,7 +72,7 @@ export const HeaderStyled = styled.div`
 
                         opacity: 0;
                         pointer-events: none;
-                        transition: 0.2s ease-out;
+                        transition: opacity 0.2s ease-out;
 
                         li {
                             padding: 0;

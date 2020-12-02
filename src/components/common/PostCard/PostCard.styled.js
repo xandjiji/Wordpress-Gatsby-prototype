@@ -4,7 +4,7 @@ export const PostCard = styled.div`
     border-radius: 5px;
     box-shadow: 2px 2px 4px 2px rgba(0,0,0,0.3);
     overflow: hidden;
-    transition: 0.2s ease-out;
+    transition: box-shadow 0.2s ease-out;
 
     &:hover {
         box-shadow: 2px 2px 5px 3px rgba(0,0,0,0.4);
@@ -42,7 +42,7 @@ export const PostCard = styled.div`
                     font-size: 12px;
                     color: #000000;
 
-                    transition: 0.2s ease-out;
+                    transition: box-shadow 0.2s ease-out;
 
                     &:hover {
                         box-shadow: 2px 2px 4px 2px rgba(0,0,0,0.14);

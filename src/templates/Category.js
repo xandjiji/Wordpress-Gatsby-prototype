@@ -65,7 +65,7 @@ export default ({ pageContext }) => {
             </Helmet>
 
             <section>
-                <PostGrid title={`Posts from '${name}'`} itemArray={filteredPosts} />
+                <PostGrid title={`Posts from '${name}'`} itemArray={filteredPosts} itemsPerPage={2} />
             </section>
         </MasterLayout>
     );

@@ -42,6 +42,7 @@ export default ({ pageContext }) => {
 
         /* initial search */
         setSearchResults(search.search(term));
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     useEffect(() => {
@@ -61,7 +62,8 @@ export default ({ pageContext }) => {
                             : 'Search results'
                     }
 
-                    itemArray={searchResults} />
+                    itemArray={searchResults}
+                    itemsPerPage={2} />
             </section>
         </MasterLayout>
     );

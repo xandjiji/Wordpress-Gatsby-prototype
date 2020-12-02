@@ -60,8 +60,8 @@ const IndexPage = () => {
     return (
         <MasterLayout>
             <SearchBar />
-            <PostGrid title="Posts" itemArray={query.allWordpressPost.edges} />
-            <PostGrid title="Pages" itemArray={query.allWordpressPage.edges} />
+            <PostGrid title="Posts" itemArray={query.allWordpressPost.edges} itemsPerPage={2} />
+            <PostGrid title="Pages" itemArray={query.allWordpressPage.edges} itemsPerPage={2} />
         </MasterLayout>
     )
 }
