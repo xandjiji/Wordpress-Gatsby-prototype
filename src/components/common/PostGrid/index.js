@@ -43,24 +43,26 @@ export default ({ title, itemArray, itemsPerPage }) => {
                     <button className={index + 1 === Math.ceil(itemArray.length / itemsPerPage) ? `disabled` : ''} onClick={() => handleSetIndex(index + 1)}>{`>`}</button>
                 </div>
 
-                {postList.map(item => {
+                <ul>
+                    {postList.map(item => {
 
-                    let currentItem;
+                        let currentItem;
 
-                    if (item.node) {
-                        currentItem = item.node;
-                    } else {
-                        currentItem = item;
-                    }
+                        if (item.node) {
+                            currentItem = item.node;
+                        } else {
+                            currentItem = item;
+                        }
 
-                    const { id } = currentItem;
+                        const { id } = currentItem;
 
-                    return (
-                        <li key={id}>
-                            <PostCard post={currentItem} />
-                        </li>
-                    )
-                })}
+                        return (
+                            <li key={id}>
+                                <PostCard post={currentItem} />
+                            </li>
+                        )
+                    })}
+                </ul>
             </PostGrid>
         </MaterialContainer>
     )

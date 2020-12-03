@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const PostGrid = styled.ul`
+export const PostGrid = styled.div`
     padding: 12px 6px;
 
     .cursor {

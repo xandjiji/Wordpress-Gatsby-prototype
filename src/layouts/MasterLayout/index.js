@@ -1,4 +1,6 @@
 import React from 'react';
+import { graphql, useStaticQuery } from 'gatsby';
+import { Helmet } from 'react-helmet';
 import { createGlobalStyle } from 'styled-components';
 
 import '../../fonts/SulSans.css'
@@ -16,8 +18,59 @@ const GlobalStyles = createGlobalStyle`
 `
 
 const MasterLayout = ({ children }) => {
+    const metaData = useStaticQuery(graphql`
+        {
+            allWordpressSiteMetadata {
+                edges {
+                    node {
+                        id
+                        description
+                        home
+                        name
+                        url
+                    }
+                }
+            }
+        }
+    `);
+
+
+    const { name, description } = metaData.allWordpressSiteMetadata.edges[0].node;
+    console.log(name);
+
     return (
         <>
+            <Helmet
+                title={name}
+                meta={[
+                    {
+                        name: `description`,
+                        content: description,
+                    },
+                    {
+                        property: `og:title`,
+                        content: name,
+                    },
+                    {
+                        property: `og:description`,
+                        content: description,
+                    },
+                    {
+                        property: `og:type`,
+                        content: `website`,
+                    },
+                    {
+                        name: `twitter:title`,
+                        content: name,
+                    },
+                    {
+                        name: `twitter:description`,
+                        content: description,
+                    },
+                ]}
+            >
+                <html lang="pt-Br" />
+            </Helmet>
             <GlobalStyles />
             <main>
                 <Header />

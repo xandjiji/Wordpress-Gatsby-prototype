@@ -32,8 +32,14 @@ export default styled.div`
     box-shadow: 2px 2px 4px 2px rgba(0,0,0,0.14);
     overflow: hidden;
 
+    label {
+        position: absolute;
+        z-index: -1;
+    }
+
     input {
         padding: 6px 16px;
+        width: 100%;
         box-sizing: border-box;
         flex-grow: 1;
         outline: none;
@@ -41,10 +47,14 @@ export default styled.div`
     }
 
     a {
-        padding: 5px 12px;
+        display: flex;
+        padding: 7px 12px;
         background-color: #3F51B5;
+        font-size: 12px;
+        color: #fff;
+
         svg {
-            transform: translate(0, 1px);
+            margin-left: 6px;
         }
     }
 `;
