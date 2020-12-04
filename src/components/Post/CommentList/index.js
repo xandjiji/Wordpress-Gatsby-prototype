@@ -1,5 +1,6 @@
 import React from 'react';
 
+import CommentList from './CommentList.styled';
 import MaterialContainer from '../../common/MaterialContainer';
 import CommentItem from '../CommentItem';
 
@@ -7,7 +8,9 @@ export default ({ comments }) => {
 
     return (
         <MaterialContainer container={true} labelTag="Comments">
-            {commentTreeBuilder(comments)}
+            <CommentList>
+                {commentTreeBuilder(comments)}
+            </CommentList>
         </MaterialContainer>
     )
 }
@@ -15,6 +18,7 @@ export default ({ comments }) => {
 const commentTreeBuilder = (array) => {
 
     array = array.sort((a, b) => a.id - b.id);
+    array = array.filter(item => item.status === 'approved');
 
     const rootArray = array.filter(item => item.parent === 0);
 
