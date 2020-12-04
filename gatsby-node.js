@@ -2,6 +2,7 @@ const _ = require(`lodash`);
 const Promise = require(`bluebird`);
 const path = require(`path`);
 const slash = require(`slash`);
+const fetch = require('node-fetch');
 
 const { getPathname } = require('./src/utils/getPathname');
 
@@ -51,6 +52,7 @@ exports.createPages = async ({ graphql, actions }) => {
                 edges {
                     node {
                         id
+                        wordpress_id
                         link
                         title
                         slug
@@ -63,7 +65,18 @@ exports.createPages = async ({ graphql, actions }) => {
         }
     `);
 
-    await pageBuilder(posts.data.allWordpressPost.edges, './src/templates/Post.js');
+    const finalPosts = await Promise.all(posts.data.allWordpressPost.edges.map(async (postItem) => {
+        const response = await fetch(`http://localhost:10003/wp-json/wp/v2/comments?post=${postItem.node.wordpress_id}`)
+        const commentsData = await response.json();
+        return {
+            node: {
+                ...postItem.node,
+                comments: commentsData
+            }
+        }
+    }));
+
+    await pageBuilder(finalPosts, './src/templates/Post.js');
 
     /* CATEGORIES */
     const categories = await graphql(`

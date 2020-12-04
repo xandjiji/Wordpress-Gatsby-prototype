@@ -36,7 +36,6 @@ const MasterLayout = ({ children }) => {
 
 
     const { name, description } = metaData.allWordpressSiteMetadata.edges[0].node;
-    console.log(name);
 
     return (
         <>

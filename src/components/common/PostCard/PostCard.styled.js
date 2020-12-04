@@ -34,7 +34,7 @@ export const PostCard = styled.div`
             a {
                 span {
                     display: block;
-                    padding: 6px 12px;
+                    padding: 13px 16px;
                     margin-bottom: 8px;
                     border-radius: 16px;
                     background-color: #C5CAE9;
