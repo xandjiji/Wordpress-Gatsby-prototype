@@ -4,7 +4,9 @@ import { Helmet } from 'react-helmet';
 import ReactHtmlParser from 'react-html-parser';
 
 import MasterLayout from '../layouts/MasterLayout';
+import PageHero from '../components/common/PageHero';
 import PostGrid from '../components/common/PostGrid';
+import SearchBar from '../components/common/SearchBar';
 
 export default ({ pageContext }) => {
 
@@ -63,6 +65,8 @@ export default ({ pageContext }) => {
             <Helmet>
                 {ReactHtmlParser(yoast_head)}
             </Helmet>
+            <PageHero text="Category" />
+            <SearchBar />
 
             <section>
                 <PostGrid title={`Posts from '${name}'`} itemArray={filteredPosts} itemsPerPage={2} />

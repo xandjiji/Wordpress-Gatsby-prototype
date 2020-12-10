@@ -3,6 +3,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 
 import MasterLayout from '../layouts/MasterLayout';
 
+import PageHero from '../components/common/PageHero';
 import SearchBar from '../components/common/SearchBar';
 import PostGrid from '../components/common/PostGrid';
 
@@ -51,6 +52,7 @@ const IndexPage = () => {
 
     return (
         <MasterLayout>
+            <PageHero text="Home" />
             <SearchBar />
             <PostGrid title="Posts" itemArray={query.allWordpressPost.edges} itemsPerPage={2} />
             {/* <PostGrid title="Pages" itemArray={query.allWordpressPage.edges} itemsPerPage={2} /> */}

@@ -1,23 +1,27 @@
 import styled from 'styled-components';
 
 export default styled.div`
-    section .content-wrapper {
-        > * {
-            margin-bottom: 16px;
-        }
+    section {
+        margin-top: 8px;
 
-        img {
-            width: 100%;
-            max-height: 600px;
-            object-fit: cover;
-        }
+        .content-wrapper {
+            > * {
+                margin-bottom: 16px;
+            }
 
-        a {
-            color: #3F51B5;
-            transition: 0.2s ease-out;
+            img {
+                width: 100%;
+                max-height: 600px;
+                object-fit: cover;
+            }
 
-            &:hover {
-                opacity: 0.7;
+            a {
+                color: #3F51B5;
+                transition: 0.2s ease-out;
+
+                &:hover {
+                    opacity: 0.7;
+                }
             }
         }
     }

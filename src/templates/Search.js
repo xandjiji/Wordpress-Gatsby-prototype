@@ -3,6 +3,7 @@ import * as JsSearch from 'js-search';
 
 import MasterLayout from '../layouts/MasterLayout';
 
+import PageHero from '../components/common/PageHero'
 import SearchBar from '../components/common/SearchBar';
 import PostGrid from '../components/common/PostGrid';
 
@@ -54,6 +55,7 @@ export default ({ pageContext }) => {
     return (
         <MasterLayout>
             <section>
+                <PageHero text="Search" />
                 <SearchBar onChangeHook={onChangeHook} />
                 <PostGrid
                     title={

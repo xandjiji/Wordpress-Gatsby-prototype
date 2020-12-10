@@ -31,6 +31,8 @@ export default styled.li`
         }
 
         .date {
+            font-size: 12px;
+            letter-spacing: 0.5px;
             opacity: 0.7;
         }
     }

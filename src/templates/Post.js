@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet';
 import ReactHtmlParser from 'react-html-parser';
 
 import MasterLayout from '../layouts/MasterLayout';
-import MaterialContainer from '../components/common/MaterialContainer';
 import Hero from '../components/Post/Hero';
 import PostContent from '../components/Post/PostContent';
 import CommentList from '../components/Post/CommentList';

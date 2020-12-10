@@ -9,11 +9,21 @@ export const HeaderStyled = styled.div`
 
     header {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
 
-        a.active {
-            border-bottom: solid 1px #ffffff99;
+        a {
+            padding: 8px;
+            border-radius: 5px;
+            transition: 0.2s ease-out;
+
+            &:hover {
+                box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.14);
+            }
+
+            &.active, :active {
+                box-shadow: inset 2px 2px rgba(0,0,0,0.14);
+            }
         }
 
         h1 {
@@ -24,6 +34,12 @@ export const HeaderStyled = styled.div`
         }
 
         nav {
+            display: none;
+
+            @media(min-width: 1024px) {
+                display: unset;
+            }
+
             flex-grow: 1;
 
             ul {
@@ -36,17 +52,11 @@ export const HeaderStyled = styled.div`
                     position: relative;
 
                     a {
-                        padding: 8px 0;
+                        /* padding: 8px 0; */
                         text-transform: uppercase;
                         font-size: 10px;
                         font-weight: 700;
                         letter-spacing: 0.6px;
-
-                        transition: opacity 0.2s ease-out;
-
-                        &:hover {
-                            opacity: 0.7;
-                        }
                     }
 
                     &:not(:last-child) {

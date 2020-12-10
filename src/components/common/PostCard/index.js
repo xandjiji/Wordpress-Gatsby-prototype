@@ -38,7 +38,7 @@ export default ({ post }) => {
                 </div>
 
                 <Link to={getPathname(link)}>
-                    <h2 className="title">{title}</h2>
+                    <h3 className="title">{title}</h3>
                 </Link>
 
                 {excerpt

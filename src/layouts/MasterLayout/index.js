@@ -16,6 +16,14 @@ const GlobalStyles = createGlobalStyle`
         font-family: 'Roboto', sans-serif;
     }
 
+    html {
+        background-color: #3F51B5;
+    }
+
+    body {
+        background-color: #fff;
+    }
+
     .container {
         margin-left: 40px;
         margin-right: 40px;
