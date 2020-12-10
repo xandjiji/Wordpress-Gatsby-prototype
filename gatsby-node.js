@@ -23,7 +23,7 @@ exports.createPages = async ({ graphql, actions }) => {
     }
 
     /* PAGES */
-    const pages = await graphql(`
+    /* const pages = await graphql(`
         {
             allWordpressPage {
                 edges {
@@ -43,7 +43,7 @@ exports.createPages = async ({ graphql, actions }) => {
         }
     `);
 
-    await pageBuilder(pages.data.allWordpressPage.edges, './src/templates/Page.js');
+    await pageBuilder(pages.data.allWordpressPage.edges, './src/templates/Page.js'); */
 
     /* POSTS */
     const posts = await graphql(`
@@ -56,9 +56,29 @@ exports.createPages = async ({ graphql, actions }) => {
                         link
                         title
                         slug
+                        date
                         excerpt
                         content
                         yoast_head
+
+                        featured_media {
+                            title
+                            alt_text
+
+                            localFile {
+                                childImageSharp {
+                                    fluid(maxWidth: 300) {
+                                        aspectRatio,
+                                        base64,
+                                        sizes,
+                                        src,
+                                        srcSet,
+                                        srcSetWebp,
+                                        srcWebp
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -99,7 +119,6 @@ exports.createPages = async ({ graphql, actions }) => {
     await pageBuilder(categories.data.allWordpressCategory.edges, './src/templates/Category.js');
 
     /* SEARCH */
-
     const searchData = await graphql(`
         {
             allWordpressPost {
@@ -122,7 +141,9 @@ exports.createPages = async ({ graphql, actions }) => {
                                         base64,
                                         sizes,
                                         src,
-                                        srcSet
+                                        srcSet,
+                                        srcSetWebp,
+                                        srcWebp
                                     }
                                 }
                             }

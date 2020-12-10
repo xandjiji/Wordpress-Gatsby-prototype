@@ -13,7 +13,7 @@ export default ({ comment, children }) => {
     return (
         <CommentItem>
             <div className="comment-header">
-                <img src={author_avatar_urls['24']} />
+                <img src={author_avatar_urls['24']} alt={author_name} />
                 <span className="author">{author_name}</span>
                 <span className="date">{monthNames[dateObj.getMonth()]} {dateObj.getDay()}/{dateObj.getFullYear()}</span>
             </div>

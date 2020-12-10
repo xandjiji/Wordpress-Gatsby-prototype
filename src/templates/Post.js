@@ -4,11 +4,13 @@ import ReactHtmlParser from 'react-html-parser';
 
 import MasterLayout from '../layouts/MasterLayout';
 import MaterialContainer from '../components/common/MaterialContainer';
+import Hero from '../components/Post/Hero';
+import PostContent from '../components/Post/PostContent';
 import CommentList from '../components/Post/CommentList';
 
 export default ({ pageContext }) => {
 
-    const { yoast_head, title, content, comments } = pageContext;
+    const { yoast_head, title, date, content, comments, featured_media } = pageContext;
 
     return (
         <MasterLayout>
@@ -16,12 +18,11 @@ export default ({ pageContext }) => {
                 {ReactHtmlParser(yoast_head)}
             </Helmet>
 
-            <MaterialContainer container={true} labelTag="Content">
-                <section>
-                    <h1>{title}</h1>
-                    <div dangerouslySetInnerHTML={{ __html: content }}></div>
-                </section>
-            </MaterialContainer>
+            <h1 hidden={true}>{title}</h1>
+
+            {featured_media ? <Hero imageData={featured_media} title={title} date={date} /> : null}
+
+            <PostContent title={title} content={content} />
 
             <CommentList comments={comments} />
         </MasterLayout>

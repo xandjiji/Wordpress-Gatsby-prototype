@@ -5,9 +5,8 @@ import MaterialContainer from '../../common/MaterialContainer';
 import CommentItem from '../CommentItem';
 
 export default ({ comments }) => {
-
     return (
-        <MaterialContainer container={true} labelTag="Comments">
+        <MaterialContainer container={true} labelTag={`Comments (${comments.length})`}>
             <CommentList>
                 {commentTreeBuilder(comments)}
             </CommentList>
@@ -26,7 +25,7 @@ const commentTreeBuilder = (array) => {
         const children = array.filter(comment => item.id === comment.parent);
 
         return (
-            <CommentItem comment={item}>
+            <CommentItem comment={item} key={item.id}>
                 {children.map(childrenItem => renderCommentAndChildren(childrenItem))}
             </CommentItem>
         );

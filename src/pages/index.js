@@ -29,7 +29,9 @@ const IndexPage = () => {
                                             base64,
                                             sizes,
                                             src,
-                                            srcSet
+                                            srcSet,
+                                            srcSetWebp,
+                                            srcWebp
                                         }
                                     }
                                 }
@@ -43,16 +45,6 @@ const IndexPage = () => {
                         }
                     }
                 }
-
-                allWordpressPage {
-                    edges {
-                        node {
-                            id
-                            title
-                            link
-                        }
-                    }
-                }
             }
         `
     );
@@ -61,7 +53,7 @@ const IndexPage = () => {
         <MasterLayout>
             <SearchBar />
             <PostGrid title="Posts" itemArray={query.allWordpressPost.edges} itemsPerPage={2} />
-            <PostGrid title="Pages" itemArray={query.allWordpressPage.edges} itemsPerPage={2} />
+            {/* <PostGrid title="Pages" itemArray={query.allWordpressPage.edges} itemsPerPage={2} /> */}
         </MasterLayout>
     )
 }
