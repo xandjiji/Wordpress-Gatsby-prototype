@@ -35,7 +35,7 @@ module.exports = {
             resolve: "gatsby-source-wordpress",
             options: {
                 minimizeDeprecationNotice: true,
-                baseUrl: "http://localhost:10003/",
+                baseUrl: "http://localhost/",
                 protocol: "http",
                 hostingWPCOM: false,
                 useACF: false,
@@ -52,6 +52,18 @@ module.exports = {
                     "**/users",
                     "**/menus"
                 ],
+                plugins: [
+                    {
+                        resolve: `gatsby-wordpress-inline-images`,
+                        options: {
+                            baseUrl: `http://localhost/`,
+                            protocol: `http`,
+                            postTypes: ["post", "page"],
+                            withWebp: true,
+                            maxWidth: 1920,
+                        }
+                    }
+                ]
             },
         },
     ],

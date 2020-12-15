@@ -9,10 +9,14 @@ export default styled.div`
                 margin-bottom: 16px;
             }
 
-            img {
-                width: 100%;
+            .gatsby-image-wrapper {    
+                width: unset !important;
                 max-height: 600px;
-                object-fit: cover;
+                img {
+                    width: 100%;
+                    max-height: 600px;
+                    object-fit: cover;
+                }
             }
 
             a {

@@ -86,7 +86,7 @@ exports.createPages = async ({ graphql, actions }) => {
     `);
 
     const finalPosts = await Promise.all(posts.data.allWordpressPost.edges.map(async (postItem) => {
-        const response = await fetch(`http://localhost:10003/wp-json/wp/v2/comments?post=${postItem.node.wordpress_id}`)
+        const response = await fetch(`http://localhost/wp-json/wp/v2/comments?post=${postItem.node.wordpress_id}`)
         const commentsData = await response.json();
         return {
             node: {
