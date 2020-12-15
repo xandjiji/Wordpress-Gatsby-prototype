@@ -3,8 +3,6 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { Helmet } from 'react-helmet';
 import { createGlobalStyle } from 'styled-components';
 
-import '../../fonts/SulSans.css'
-
 import Header from '../../components/common/Header';
 import Footer from '../../components/common/Footer';
 
